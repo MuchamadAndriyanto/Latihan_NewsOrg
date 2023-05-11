@@ -13,32 +13,31 @@ import com.example.newsapi.viewmodel.ArticleViewModel
 
 class ArticleActivity : AppCompatActivity() {
     private lateinit var binding: ActivityArticleBinding
-    private lateinit var artAdapter: ArticleAdapter
-    private lateinit var artViewModel: ArticleViewModel
-
+    private lateinit var articleAdapter: ArticleAdapter
+    private lateinit var articleViewModel: ArticleViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityArticleBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        artViewModel = ViewModelProvider(this).get(ArticleViewModel::class.java)
-        artAdapter = ArticleAdapter(ArrayList())
+        articleViewModel = ViewModelProvider(this).get(ArticleViewModel::class.java)
+        articleAdapter = ArticleAdapter(ArrayList())
 
         binding.rvArticle.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        binding.rvArticle.adapter = artAdapter
+        binding.rvArticle.adapter = articleAdapter
 
         val bundle = intent.extras
         val getSource = bundle?.getString("source", "") ?: ""
 
-        artViewModel.callApiArticle(getSource)
+        articleViewModel.callApiArticle(getSource)
 
-        artViewModel.getDataArticle().observe(this, Observer { list ->
+        articleViewModel.getDataArticle().observe(this, Observer { list ->
             list?.let {
-                artAdapter.setDataArticle(it)
+                articleAdapter.setDataArticle(it)
             }
         })
 
-        artAdapter.onClick = { article ->
+        articleAdapter.onClick = { article ->
             val bundle = Bundle().apply {
                 putString("url", article.url)
             }
