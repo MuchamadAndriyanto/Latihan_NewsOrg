@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <ImageButton
-        android:src="@drawable/ic_launcher_background"
+        android:src="@drawable/baseline_search_24"
         android:id="@+id/btnSearch"
         android:layout_alignParentRight="true"
         android:text="Search"
