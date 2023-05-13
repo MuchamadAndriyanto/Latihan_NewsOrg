@@ -14,9 +14,10 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class SourceActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivitySourceBinding
-    private lateinit var sourceAdapter: SourceAdapter
-    private lateinit var sourceViewModel: SourceViewModel
+    lateinit var binding : ActivitySourceBinding
+    lateinit var sourceAdapter: SourceAdapter
+    lateinit var sourceVm : SourceViewModel
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,22 +25,25 @@ class SourceActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         sourceAdapter = SourceAdapter(ArrayList())
+
+        sourceVm = ViewModelProvider(this).get(SourceViewModel::class.java)
+
         binding.rvSource.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        binding.rvSource.adapter = sourceAdapter
 
         val bundle = intent.extras
         val getCategory = bundle?.getString("name", "") ?: ""
 
-        sourceViewModel = ViewModelProvider(this).get(SourceViewModel::class.java)
-        sourceViewModel.callApiSource(getCategory)
+        sourceVm.callApiSource(getCategory)
+        binding.rvSource.adapter = sourceAdapter
 
-        sourceViewModel.getDataSource().observe(this, Observer { list ->
+        sourceVm.getDataSource().observe(this, Observer { list ->
             list?.let {
-                sourceAdapter.listSource(it)
+                sourceAdapter.setDataResouce(it)
             }
         })
 
-        sourceAdapter.onClick = { source ->
+
+        sourceAdapter.onClickso = { source ->
             val bundle = Bundle().apply {
                 putString("source", source.name)
             }
@@ -47,5 +51,7 @@ class SourceActivity : AppCompatActivity() {
             intent.putExtras(bundle)
             startActivity(intent)
         }
+
+
     }
 }

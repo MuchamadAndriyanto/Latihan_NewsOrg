@@ -7,8 +7,8 @@
     tools:context=".view.ArticleActivity">
 
     <EditText
-        android:hint="find here..."
-        android:layout_marginRight="100dp"
+        android:hint="find_here"
+        android:layout_marginEnd="100dp"
         android:id="@+id/searchHere"
         android:layout_marginBottom="5dp"
         android:layout_width="match_parent"
@@ -16,14 +16,14 @@
     <ImageButton
         android:src="@drawable/baseline_search_24"
         android:id="@+id/btnSearch"
-        android:layout_alignParentRight="true"
-        android:text="Search"
+        android:layout_alignParentEnd="true"
+        android:text="search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvArticle"
-        android:layout_below="@+id/searchHere"
+        android:layout_below="@+id/btnSearch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
