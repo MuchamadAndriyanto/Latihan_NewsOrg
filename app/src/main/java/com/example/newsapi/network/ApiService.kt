@@ -1,9 +1,7 @@
 package com.example.newsapi.network
 
-import com.example.newsapi.model.ResponseDataSource
-import com.example.newsapi.model.Source
+import com.example.newsapi.model.source.ResponseDataSource
 import com.example.newsapi.model.article.Article
-import com.example.newsapi.model.article.ResponseDataArticle
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query

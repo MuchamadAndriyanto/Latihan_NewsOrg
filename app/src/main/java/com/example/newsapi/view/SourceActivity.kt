@@ -6,12 +6,12 @@ import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.newsapi.R
 import com.example.newsapi.databinding.ActivitySourceBinding
-import com.example.newsapi.model.Source
 import com.example.newsapi.view.adapter.SourceAdapter
 import com.example.newsapi.viewmodel.SourceViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SourceActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySourceBinding

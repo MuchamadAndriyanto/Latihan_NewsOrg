@@ -10,7 +10,9 @@ import com.example.newsapi.R
 import com.example.newsapi.databinding.ActivityArticleBinding
 import com.example.newsapi.view.adapter.ArticleAdapter
 import com.example.newsapi.viewmodel.ArticleViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ArticleActivity : AppCompatActivity() {
     private lateinit var binding: ActivityArticleBinding
     private lateinit var articleAdapter: ArticleAdapter

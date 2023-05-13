@@ -4,11 +4,15 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.newsapi.model.article.Article
 import com.example.newsapi.network.ApiClient
+import com.example.newsapi.network.ApiService
+import dagger.hilt.android.lifecycle.HiltViewModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import javax.inject.Inject
 
-class ArticleViewModel: ViewModel() {
+@HiltViewModel
+class ArticleViewModel @Inject constructor(var api : ApiService): ViewModel() {
 
     var liveDataArticle : MutableLiveData<List<Article>?> = MutableLiveData()
 
@@ -17,7 +21,7 @@ class ArticleViewModel: ViewModel() {
     }
 
     fun callApiArticle(article : String){
-        ApiClient.instance.gellAllArticles(article).enqueue(object : Callback<List<Article>>{
+        api.gellAllArticles(article).enqueue(object : Callback<List<Article>>{
             override fun onResponse(
                 call: Call<List<Article>>,
                 response: Response<List<Article>>

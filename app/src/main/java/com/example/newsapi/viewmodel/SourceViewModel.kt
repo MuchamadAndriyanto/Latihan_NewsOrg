@@ -2,14 +2,18 @@ package com.example.newsapi.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.newsapi.model.ResponseDataSource
-import com.example.newsapi.model.Source
+import com.example.newsapi.model.source.ResponseDataSource
+import com.example.newsapi.model.source.Source
 import com.example.newsapi.network.ApiClient
+import com.example.newsapi.network.ApiService
+import dagger.hilt.android.lifecycle.HiltViewModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import javax.inject.Inject
 
-class SourceViewModel : ViewModel(){
+@HiltViewModel
+class SourceViewModel @Inject constructor(var api : ApiService) : ViewModel(){
 
     var liveDataSource : MutableLiveData<List<Source>?> = MutableLiveData()
 
@@ -18,7 +22,7 @@ class SourceViewModel : ViewModel(){
     }
 
     fun callApiSource(category : String){
-        ApiClient.instance.getAllSources(category)
+        api.getAllSources(category)
             .enqueue(object : Callback<ResponseDataSource> {
                 override fun onResponse(
                     call: Call<ResponseDataSource>,
