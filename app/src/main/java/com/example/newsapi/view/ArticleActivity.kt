@@ -1,3 +1,8 @@
+@file:Suppress(
+    "RedundantSamConstructor",
+    "ReplaceGetOrSet"
+)
+
 package com.example.newsapi.view
 
 import android.content.Intent
@@ -14,9 +19,9 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class ArticleActivity : AppCompatActivity() {
 
-    lateinit var binding: ActivityArticleBinding
-    lateinit var artadapter: ArticleAdapter
-    lateinit var artviewmodel : ArticleViewModel
+    private lateinit var binding: ActivityArticleBinding
+    private lateinit var artadapter: ArticleAdapter
+    private lateinit var artviewmodel : ArticleViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

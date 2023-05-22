@@ -12,12 +12,8 @@ import retrofit2.Response
 import javax.inject.Inject
 
 @HiltViewModel
-class SourceViewModel @Inject constructor(var api : ApiService): ViewModel() {
-    lateinit var liveDataSource : MutableLiveData<List<Source>?>
-
-    init {
-        liveDataSource = MutableLiveData()
-    }
+class SourceViewModel @Inject constructor(private var api : ApiService): ViewModel() {
+    var liveDataSource : MutableLiveData<List<Source>?> = MutableLiveData()
 
     fun getDataSource():MutableLiveData<List<Source>?> {
         return liveDataSource

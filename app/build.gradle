@@ -36,6 +36,11 @@ android {
         viewBinding true
         dataBinding true
     }
+    lint{
+        disable 'TypographyQuotes'
+        lintConfig file("lint.xml")
+        disable 'Typos'
+    }
 }
 
 dependencies {

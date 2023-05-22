@@ -1,5 +1,6 @@
 package com.example.newsapi.view.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -7,13 +8,12 @@ import com.bumptech.glide.Glide
 import com.example.newsapi.databinding.ItemArticleBinding
 import com.example.newsapi.model.article.Article
 
-class ArticleAdapter(var listArticle : List<Article>): RecyclerView.Adapter<ArticleAdapter.ViewHolder>() {
+@Suppress("RemoveRedundantQualifierName")
+class ArticleAdapter(private var listArticle : List<Article>): RecyclerView.Adapter<ArticleAdapter.ViewHolder>() {
 
     var onClickArt : ((Article)->Unit)? = null
 
-    class ViewHolder( var binding : ItemArticleBinding) : RecyclerView.ViewHolder(binding.root) {
-
-    }
+    class ViewHolder( var binding : ItemArticleBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleAdapter.ViewHolder {
         val view = ItemArticleBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -33,6 +33,7 @@ class ArticleAdapter(var listArticle : List<Article>): RecyclerView.Adapter<Arti
     override fun getItemCount(): Int {
         return listArticle.size
     }
+    @SuppressLint("NotifyDataSetChanged")
     fun setDataArticle(list : List<Article>){
         listArticle = list
         notifyDataSetChanged()

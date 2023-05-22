@@ -14,9 +14,9 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class SourceActivity : AppCompatActivity() {
 
-    lateinit var binding : ActivitySourceBinding
-    lateinit var sourceAdapter: SourceAdapter
-    lateinit var sourceVm : SourceViewModel
+    private lateinit var binding : ActivitySourceBinding
+    private lateinit var sourceAdapter: SourceAdapter
+    private lateinit var sourceVm : SourceViewModel
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,7 +26,7 @@ class SourceActivity : AppCompatActivity() {
 
         sourceAdapter = SourceAdapter(ArrayList())
 
-        sourceVm = ViewModelProvider(this).get(SourceViewModel::class.java)
+        sourceVm = ViewModelProvider(this)[SourceViewModel::class.java]
 
         binding.rvSource.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
@@ -36,6 +36,7 @@ class SourceActivity : AppCompatActivity() {
         sourceVm.callApiSource(getCategory)
         binding.rvSource.adapter = sourceAdapter
 
+        @Suppress("RedundantSamConstructor")
         sourceVm.getDataSource().observe(this, Observer { list ->
             list?.let {
                 sourceAdapter.setDataResouce(it)

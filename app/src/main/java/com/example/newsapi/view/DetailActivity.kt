@@ -1,15 +1,17 @@
 package com.example.newsapi.view
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.webkit.WebViewClient
-import com.example.newsapi.R
 import com.example.newsapi.databinding.ActivityDetailBinding
 import dagger.hilt.android.AndroidEntryPoint
 
+@Suppress("RemoveRedundantCallsOfConversionMethods")
 @AndroidEntryPoint
 class DetailActivity : AppCompatActivity() {
-    lateinit var binding : ActivityDetailBinding
+    private lateinit var binding : ActivityDetailBinding
+    @SuppressLint("SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailBinding.inflate(layoutInflater)

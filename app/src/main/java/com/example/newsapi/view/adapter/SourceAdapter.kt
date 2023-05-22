@@ -8,15 +8,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.newsapi.databinding.ItemSourceBinding
 import com.example.newsapi.model.source.Source
 
-class SourceAdapter(var listSource : List<Source>): RecyclerView.Adapter<SourceAdapter.ViewHolder>()  {
+class SourceAdapter(private var listSource : List<Source>): RecyclerView.Adapter<SourceAdapter.ViewHolder>()  {
     var onClickso : ((Source)->Unit)? = null
 
-    class ViewHolder(var binding: ItemSourceBinding):RecyclerView.ViewHolder(binding.root)  {
-
-    }
+    class ViewHolder(var binding: ItemSourceBinding):RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        var view = ItemSourceBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val view = ItemSourceBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(view)
     }
 
@@ -31,6 +29,7 @@ class SourceAdapter(var listSource : List<Source>): RecyclerView.Adapter<SourceA
         return  listSource.size
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setDataResouce(list: List<Source>){
         this.listSource = list
         notifyDataSetChanged()

@@ -1,3 +1,7 @@
+@file:Suppress("unused", "unused", "unused", "RedundantSuppression", "RedundantSuppression",
+    "RedundantSuppression", "RedundantSuppression", "RedundantSuppression", "unused"
+)
+
 package com.example.newsapi.network
 
 import dagger.Module
@@ -10,11 +14,14 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
+@Suppress("unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+    "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused"
+)
 @Module
 @InstallIn(SingletonComponent::class)
 object ApiClient {
 
-    const val BASE_URL = "https://newsapi.org/v2/"
+    private const val BASE_URL = "https://newsapi.org/v2/"
 
     private  val logging : HttpLoggingInterceptor
         get(){

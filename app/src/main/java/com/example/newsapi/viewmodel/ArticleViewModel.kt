@@ -12,12 +12,8 @@ import retrofit2.Response
 import javax.inject.Inject
 
 @HiltViewModel
-class ArticleViewModel @Inject constructor(var api : ApiService):ViewModel() {
-    lateinit var liveDataArticle : MutableLiveData<List<Article>?>
-
-    init {
-        liveDataArticle = MutableLiveData()
-    }
+class ArticleViewModel @Inject constructor(private var api : ApiService):ViewModel() {
+    var liveDataArticle : MutableLiveData<List<Article>?> = MutableLiveData()
 
     fun getDataArticle() : MutableLiveData<List<Article>?> {
         return liveDataArticle
